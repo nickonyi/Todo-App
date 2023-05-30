@@ -1,0 +1,26 @@
+{
+    "name": "todo-app",
+    "version": "1.0.0",
+    "description": "![Design preview for the Todo app coding challenge](./design/desktop-preview.jpg)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack --progress --mode=production",
+        "watch": "webpack --progress --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nickonyi/Todo-App.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/nickonyi/Todo-App/issues"
+    },
+    "homepage": "https://github.com/nickonyi/Todo-App#readme",
+    "devDependencies": {
+        "webpack": "^5.84.1",
+        "webpack-cli": "^5.1.1"
+    }
+}
