@@ -1,0 +1,95 @@
+:root {
+    /* font family*/
+    --ff-primary: 'Josefin Sans', sans-serif;
+    /* font weight*/
+    --fw-regular: 400;
+    --fw-bold: 700;
+    /* font size*/
+    --fs-300: .8125rem;
+    --fs-400: .875rem;
+    --fs-500: 1rem;
+    --fs-550: 1.125rem;
+    --fs-575: 1.5rem;
+    --fs-600: 1.875rem;
+    --fs-700: 2rem;
+    --fs-800: 2.5rem;
+    --fs-900: 3.5rem;
+    /* color*/
+    --clr-primary: hsl(220, 98%, 61%);
+    --clr-primary-grd1: hsl(192, 100%, 67%);
+    --clr-primary-grd2: hsl(280, 87%, 65%);
+    /* Light theme*/
+    --clr-very-light-gray: hsl(0, 0%, 98%);
+    --clr-light-grayish-blue: hsl(236, 33%, 92%);
+    --clr-dark-grayish-blue: hsl(236, 9%, 61%);
+    --clr-very-dark-grayish-blue: hsl(235, 19%, 35%);
+    /* Dark theme*/
+    --clr-very-dark-blue: hsl(235, 21%, 11%);
+    --clr-dark-saturated-blue: hsl(235, 24%, 19%);
+    --clr-light-grayish-blue: hsl(236, 33%, 92%);
+    --clr-Dark-grayish-blue: hsl(234, 11%, 52%);
+    --clr-very-dark-grayish-blue: hsl(233, 14%, 35%);
+    --clr-muy-dark-grayish-blue: hsl(237, 14%, 26%);
+}
+
+
+/* Box sizing rules */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* Remove default margin */
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+
+/* Set core root defaults */
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-family: var(--ff-primary);
+}
+
+
+/* Set core body defaults */
+
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
