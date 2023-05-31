@@ -17,14 +17,21 @@
 
 <body>
     <header class="header">
-        <button class="btn-open-nav" id="btn-open-nav">
-            <i class="fas fa-bars"></i>
-        </button>
-        <h1 class="header__title">TODO</h1>
-        <div class="header__theme">
-            <input type="checkbox" id="checkbox" class="checkbox" checked="true">
-            <img class="sun" src="images/icon-sun.svg" alt="">
+        <div class="hidden-menu">
+            <span class="materials-icons-round"> <i class="fas fa-bars"></i></span>
         </div>
+        <div class="logo-center">
+            <div class="logo-text">Todo</div>
+        </div>
+        <div class="theme">
+            <input type="checkbox" id="checkbox" class="checkbox" checked="True">
+            <label for="label" class="label">
+                <img src="./images/icon-sun.svg" alt="" class="sun">
+                <span class="materials-icon-round moon"></span>
+                <div class="ball"></div>
+            </label>
+        </div>
+
     </header>
 
 </body>
