@@ -18,6 +18,8 @@
     --clr-primary: hsl(220, 98%, 61%);
     --clr-primary-grd1: hsl(192, 100%, 67%);
     --clr-primary-grd2: hsl(280, 87%, 65%);
+    --clr-very-white: hsl(0, 0%, 100%);
+    --clr-text-color: var(--clr-dark-saturated-blue);
     /* Light theme*/
     --clr-very-light-gray: hsl(0, 0%, 98%);
     --clr-light-grayish-blue: hsl(236, 33%, 92%);
@@ -101,7 +103,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: url('./images/bg-mobile-light.jpg');
+    background-image: url('./images/bg-desktop-dark.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     font-size: var(--fs-600);
@@ -109,6 +111,10 @@ body {
     padding-inline: 20px;
     font-weight: var(--fw-bold);
     overflow-x: hidden;
+}
+
+.material-icons-round .header-menu {
+    color: red;
 }
 
 .hidden-menu {
@@ -168,10 +174,11 @@ body {
 .sun {
     transform: scale(1.3);
     width: 24.7px;
+    color: hsl(51, 100%, 50%);
 }
 
 .moon {
-    color: rgb(86, 152, 163);
+    color: var(--clr-dark-saturated-blue);
     transform: scale(1.3);
 }
 
@@ -189,10 +196,79 @@ body {
 /* plus meaning target the node after it */
 
 .checkbox:checked+.label .ball {
-    transform: translate(50px);
+    transform: translate(48px);
     background-color: var(--clr-dark-saturated-blue);
 }
 
 .checkbox:checked+label {
     background-color: var(--clr-dark-grayish-blue);
+}
+
+
+/* main styling */
+
+.content {
+    display: flex;
+}
+
+
+/* css for left panel*/
+
+.left-panel {
+    background-color: var(--clr-light-grayish-blue);
+    display: flex;
+    flex-direction: column;
+    color: var(--clr-text-color);
+    padding: 20px;
+    width: 350px;
+    user-select: none;
+}
+
+.left-panel h2 {
+    margin-top: 0;
+    padding-block: 15px;
+    text-transform: uppercase;
+    font-weight: var(--fw-bold);
+    letter-spacing: .5rem;
+    font-size: var(--fs-575);
+}
+
+.left-panel .material-icons-round {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+.left-panel img {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+button,
+li,
+form,
+.tile {
+    margin: 3px 0;
+    height: auto;
+    padding-top: 20px;
+    font-size: var(--fs-550);
+    background: transparent;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    cursor: pointer;
 }

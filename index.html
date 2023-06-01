@@ -19,7 +19,7 @@
 <body>
     <header class="header">
         <div class="hidden-menu">
-            <span class="materials-icons-round"> <i class="fas fa-bars"></i></span>
+            <span class="material-icons-round header-menu">menu</span>
         </div>
         <div class="logo-center">
             <div class="logo-text">Todo</div>
@@ -27,8 +27,8 @@
         <div class="theme">
             <input type="checkbox" id="checkbox" class="checkbox" checked="True">
             <label for="label" class="label">
-                <img src="./images/icon-sun.svg" alt="" class="sun">
-                <span class="materials-icon-round moon"></span>
+                <span class="material-icons-round sun">light_mode</span>
+                <span class="material-icons-round moon">dark_mode</span>
                 <div class="ball"></div>
             </label>
         </div>
@@ -88,8 +88,42 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <!-----Right panel-->
+        <div id="right-panel" class="right-panel">
+            <div class="title">All Tasks</div>
+            <div class="list-todo">
+                <ul></ul>
+                <!-- hidden pop up option -->
+                <div class="hidden option" id="list-option">
+                    <button class="list-edit">Edit</button>
+                    <button class="list-delete">Delete</button>
+                </div>
+                <!-- hidden pop up edit task form-->
+                <form action="" id="edit-list-form" class="hidden" autocomplete="off">
+                    <div class="input-field">
+                        <label>Title:</label>
+                        <input type="text" id="edit-list-title" placeholder="What to do?" maxlength="24">
+                        <label>Details(optional):</label>
+                        <textarea name="" id="edit-list-details" placeholder="eg:I'm not procastinating today."></textarea>
+                        <label>Date:</label>
+                        <input type="date" id="edit-list-date">
+                        <div class="form-buttons">
+                            <input type="submit" id="edit-list-submit-btn" value="Add">
+                            <input type="button" id="edit-list-cancel-btn" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+                <button id="add-list"> <span class="material-icons-round">add_circle_outlined</span>Add Task</button>
+            </div>
+        </div>
     </main>
-
+    <footer class="footer">
+        <p>Copyright © 2023 Nick_Onyi</p>
+        <a href="" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+    </footer>
 </body>
 
 </html>
