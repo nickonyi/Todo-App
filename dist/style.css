@@ -625,15 +625,21 @@ i:hover {
 @media (max-width:430px) {
     body {
         font-size: var(--fs-400);
+        overflow-x: hidden;
     }
     .content {
         flex-direction: column;
+        max-width: 100vw;
     }
     .content>div {
         flex: 1;
     }
     .left-panel {
         width: 100%;
+    }
+    .right-panel {
+        height: 60vh;
+        padding: 10px;
     }
     .list-todo {
         padding-top: 0;
