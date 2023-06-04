@@ -334,9 +334,19 @@ form:hover {
     transition: max-height 0.8s ease-out, opacity 300ms ease-in-out;
 }
 
+.hidden {
+    top: 0;
+    left: 0;
+    pointer-events: none !important;
+    position: absolute !important;
+    max-height: 0 !important;
+    /* do nth but avoid opacity transition when position absolute */
+    transition: max-height 1s ease-out !important;
+    opacity: 0 !important;
+}
+
 .project-icon {
     margin-top: 3px;
-    background-color: red;
 }
 
 .input-field {
@@ -647,5 +657,8 @@ i:hover {
     #edit-list-form {
         transform: scale(0.8);
         margin-top: 0;
+    }
+    #add-list {
+        margin-left: 20px;
     }
 }
