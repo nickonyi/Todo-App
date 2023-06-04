@@ -1,3 +1,7 @@
+import { createEventListener } from "./creatingProject";
+
+createEventListener();
+
 //hide side menu event listener
 const hiddenMenu = document.querySelector('.hidden-menu');
 hiddenMenu.addEventListener('click', () => {
