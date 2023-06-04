@@ -346,7 +346,8 @@ form:hover {
 }
 
 .project-icon {
-    margin-top: 3px;
+    margin-top: 0;
+    opacity: 0;
 }
 
 .input-field {

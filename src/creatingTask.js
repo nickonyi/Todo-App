@@ -2,8 +2,9 @@ function displayTask() {
 
 }
 
-function updateTitle() {
-
+function updateTitle(nameNode) {
+    const title = document.querySelector('.title');
+    title.textContent = nameNode.textContent;
 }
 
 function id() {
