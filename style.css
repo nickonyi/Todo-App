@@ -350,6 +350,11 @@ form:hover {
     opacity: 0;
 }
 
+.project-Info {
+    display: flex;
+    flex: 1;
+}
+
 .input-field {
     display: flex;
     flex-direction: column;
@@ -606,6 +611,11 @@ li:active {
 .noTask {
     text-align: center;
     font-size: 1.5rem;
+}
+
+.data-tile {
+    display: flex;
+    justify-content: space-between;
 }
 
 
