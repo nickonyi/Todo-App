@@ -18,27 +18,86 @@ function createEventListener() {
     const leftPanel = document.querySelector('.left-panel');
     leftPanel.addEventListener('click', checkTile);
 
+    displayProject(projectList);
+
 }
 
 //get project list of objects from locak storage or start with empty
 let defaultProjectList = [];
+let projectList = localStorage.getItem("myProjectList");
+
+projectList = JSON.parse(projectList || JSON.stringify(defaultProjectList));
 
 //process the input and prepare to create project element
 function processProjectInput(e) {
     e.preventDefault();
     let projectName = document.querySelector('#project-input').value;
     let dataProject = findNextDataset();
-    const newProject = createProject(projectName);
+    const newProject = createProject(dataProject, projectName);
 
-    console.log(newProject.name);
+    projectList.push(newProject);
+    saveToLocalStorage();
 
-    defaultProjectList.push(newProject);
+    addProject(dataProject, projectName);
+    hideProjectForm();
 
-    console.log(defaultProjectList);
 }
 
-function createSpanIcon() {
+//save projectList and last id data on local storage
+function saveToLocalStorage() {
+    localStorage.setItem("myProjectList", JSON.stringify(projectList));
+    localStorage.setItem("currentId", (id).toString());
 
+
+}
+
+//display the list of all projects in the left panel
+function displayProject(array) {
+    array.forEach(project => {
+        addProject(project.dataProject, project.name);
+    })
+}
+//create a project and add it to the list of projects in HTM;
+function addProject(dataProject, textInput) {
+    const project = document.querySelector('.project');
+    const form = document.querySelector('#project-form');
+
+    const container = document.createElement('div');
+    container.setAttribute('data-project', `${dataProject}`);
+    container.classList.add('tile', 'data-tile');
+    project.insertBefore(container, form);
+
+    //menu three lines icon
+    const menuIcon = createSpanIcon('menu');
+    menuIcon.setAttribute('data-drag', '');
+    container.appendChild(menuIcon);
+    //name and number status
+    const projectInfo = document.createElement('div');
+    projectInfo.classList.add('project-info');
+    container.appendChild(projectInfo);
+
+    const projectName = document.createElement('div');
+    projectName.classList.add('project-name');
+    projectName.textContent = textInput;
+
+    projectInfo.appendChild(projectName);
+    //three dots on the right section
+    const editDiv = document.createElement('div');
+    editDiv.classList.add('edit-container');
+    editDiv.setAttribute('data-dropdown', '');
+    container.appendChild(editDiv);
+
+    const editIcon = createSpanIcon('more_vert');
+    editIcon.setAttribute("data-dropdown-button", "");
+    editDiv.appendChild(editIcon);
+
+}
+//create span icon of google materials
+function createSpanIcon(name) {
+    const icon = document.createElement('span');
+    icon.classList.add('material-icons-round');
+    icon.textContent = name;
+    return icon;
 }
 
 //find next data-set
@@ -47,16 +106,10 @@ const findNextDataset = () => {
     return allprojects.length;
 }
 
-function projectList() {
-
-}
-
-function saveToLocalStorage() {
-
-}
-
+// remove add task Btn when homeTiles is selected
 function hideAddTaskBtn() {
-
+    const addTaskBtn = document.querySelector('#add-list');
+    addTaskBtn.classList.add('hidden');
 }
 
 //check to see what tile is selected
@@ -65,27 +118,35 @@ function checkTile(e) {
     let projectTile = e.target.closest('.project .tile');
 
 
-
     if (homeTile != null) {
         const title = homeTile.querySelector('[data-name]');
         selectTile(homeTile);
         // checkWhichHomeTile(homeTile);
         updateTitle(title);
+        hideAddTaskBtn();
+    } else if (projectTile != null) {
+        const title = projectTile.querySelector(".project-name");
+        let dataProject = projectTile.dataset.project;
+
+        selectTile(projectTile);
+        updateTitle(title);
+    } else {
+        return;
     }
 
 }
 //create project factory function
-function createProject(dataProject, name) {
+const createProject = (dataProject, name) => {
     const taskList = [];
     const taskNum = taskList.length;
-
-    {
+    return {
         dataProject,
         name,
         taskList,
         taskNum
     }
 }
+
 
 //pop up the project form
 function showProjectForm() {
@@ -110,4 +171,4 @@ function selectTile(node) {
     node.classList.add('selected');
 
 }
-export { createEventListener, createSpanIcon, projectList, saveToLocalStorage, hideAddTaskBtn };
+export { createEventListener, createSpanIcon, projectList, saveToLocalStorage, hideAddTaskBtn, createProject };

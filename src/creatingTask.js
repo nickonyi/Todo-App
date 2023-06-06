@@ -1,3 +1,20 @@
+import { projectList, createSpanIcon, saveToLocalStorage } from "./creatingProject"
+import {
+    styleCompletedTask,
+    updateCompletedTask,
+    styleImportantTask,
+    updateImportantTask,
+    deleteTask,
+    showEditForm,
+    revertEditFormLocation,
+    processEditTask,
+    showHiddenTask
+} from "./editingTask"
+
+function listEvent() {
+
+}
+
 function displayTask() {
 
 }
