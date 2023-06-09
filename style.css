@@ -298,20 +298,21 @@ form:hover {
 /* css for edit project */
 
 .option {
-    background-color: yellow;
     pointer-events: none;
     display: flex;
-    opacity: 0;
+    opacity: 1;
     flex-direction: column;
-    position: absolute;
+    background: var(--clr-text-color);
     bottom: 30px;
     right: 10px;
     z-index: 2;
-    border-radius: 4px;
+    border-radius: 3px;
+    background-color: var(--clr-light-grayish-blue);
     padding: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     transform: translateY(+10px);
     transition: opacity 100ms ease-in-out, transform 100ms ease-in-out;
+    position: absolute;
 }
 
 .option>button {
@@ -321,6 +322,7 @@ form:hover {
 
 .projects #project-form,
 .projects #rename-form,
+#list-form,
 #edit-list-form {
     background-color: aquamarine;
     display: flex;
@@ -384,6 +386,8 @@ input[type=date] {
 .rename-cancel-btn,
 .list-edit,
 .list-delete,
+.list-submit-btn,
+.list-cancel-btn,
 .edit-list-submit-btn,
 .edit-list-cancel-btn {
     background-color: rgb(173, 38, 60);
@@ -401,6 +405,7 @@ input[type=date] {
 .project-submit-btn,
 .rename-rename-btn,
 .list-edit,
+.list-submit-btn,
 .edit-list-submit-btn {
     background-color: var(--clr-primary);
 }
@@ -408,6 +413,7 @@ input[type=date] {
 .project-cancel-btn,
 .rename-cancel-btn,
 .list-delete,
+.list-cancel-btn,
 .edit-list-cancel-btn {
     background-color: rgb(190, 4, 4);
 }
@@ -475,7 +481,7 @@ li {
 .unchecked {
     width: 13px;
     height: 13px;
-    border: solid 2px var(--textColor);
+    border: solid 2px var(--clr-text-color);
     border-radius: 50%;
     margin-right: 8px;
     margin-top: 10px;
@@ -483,15 +489,16 @@ li {
 }
 
 .checked {
-    background-image: url("./images/icon-check.svg");
+    background-image: url("./images/checkmark.png");
     background-size: 100%;
     background-repeat: no-repeat;
     background-origin: border-box;
-    background-color: white;
-    border-color: var(--accent);
+    background-color: hsl(0, 0%, 100%);
+    border-color: hsl(0, 0%, 100%);
+    transform: scale(1.3);
 }
 
-.lineThrough {
+.line-through {
     text-decoration: line-through;
 }
 
@@ -518,7 +525,8 @@ li {
 
 /* edit form css */
 
-#edit-list-form {
+#edit-list-form,
+#list-form {
     background-color: var(--clr-light-grayish-blue);
     width: 300px;
     margin: auto;
@@ -532,6 +540,8 @@ li {
     margin-top: 10px;
 }
 
+#list-form input,
+#list-form textarea,
 #edit-list-form input,
 #edit-list-form textarea {
     width: 100%;
@@ -567,14 +577,14 @@ li {
 }
 
 .list-right .material-icons-round:hover {
-    background-color: var(--bgColorPopUp);
+    background-color: var(--clr-Dark-grayish-blue);
 }
 
 .date {
     font-size: 0.875rem;
     padding: 3px 6px;
     margin: 6px 5px;
-    border: solid 1.5px var(--textColor);
+    border: solid 1.5px var(--clr-text-color);
     border-radius: 10px;
 }
 
@@ -618,6 +628,19 @@ li:active {
     justify-content: space-between;
 }
 
+.edit-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    position: relatie;
+}
+
+.edit-container.active .option {
+    opacity: 1 !important;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
 
 /* footer styling */
 
@@ -648,6 +671,9 @@ i:hover {
         font-size: var(--fs-400);
         overflow-x: hidden;
     }
+    .title {
+        font-size: var(--fs-500);
+    }
     .content {
         flex-direction: column;
         max-width: 100vw;
@@ -665,6 +691,7 @@ i:hover {
     .list-todo {
         padding-top: 0;
     }
+    #list-form,
     #edit-list-form {
         transform: scale(0.8);
         margin-top: 0;
