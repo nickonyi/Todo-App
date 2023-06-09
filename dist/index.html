@@ -74,6 +74,7 @@
                     <button>Rename</button>
                     <button>Delete</button>
                 </div>
+
                 <!-- hidden pop up form -->
                 <form id="rename-form" class="hidden" autocomplete="off">
                     <div class="project-icon">
@@ -96,8 +97,8 @@
                 <ul></ul>
                 <!-- hidden pop up option -->
                 <div class="hidden option" id="list-option">
-                    <button class="list-edit">Edit</button>
-                    <button class="list-delete">Delete</button>
+                    <button id="list-edit">Edit</button>
+                    <button id="list-delete">Delete</button>
                 </div>
                 <!-- hidden pop up edit task form-->
                 <form action="" id="edit-list-form" class="hidden" autocomplete="off">
@@ -111,6 +112,21 @@
                         <div class="form-buttons">
                             <input type="submit" class="edit-list-submit-btn" value="Add">
                             <input type="button" class="edit-list-cancel-btn" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+                <!-- hidden pop up adding task form -->
+                <form id="list-form" class="hidden" autocomplete="off">
+                    <div class="inputField">
+                        <label>Title:</label>
+                        <input type="text" id="list-input" placeholder="What to do?">
+                        <label>Details(optional):</label>
+                        <textarea type="text" id="list-input-detail" placeholder="eg: I'm just gonna procrastinate, aren't I?" wrap="hard"></textarea>
+                        <label>Date:</label>
+                        <input type="date" id="list-input-date">
+                        <div class="form-buttons">
+                            <input type="submit" class="list-submit-btn" value="Add">
+                            <input type="button" class="list-cancel-btn" value="Cancel">
                         </div>
                     </div>
                 </form>

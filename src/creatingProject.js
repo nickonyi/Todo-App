@@ -18,9 +18,11 @@ function createEventListener() {
     const leftPanel = document.querySelector('.left-panel');
     leftPanel.addEventListener('click', checkTile);
 
+
     displayProject(projectList);
 
 }
+
 
 //get project list of objects from locak storage or start with empty
 let defaultProjectList = [];
@@ -121,6 +123,7 @@ function checkTile(e) {
     if (homeTile != null) {
         const title = homeTile.querySelector('[data-name]');
         selectTile(homeTile);
+        revertOptionLocation();
         // checkWhichHomeTile(homeTile);
         updateTitle(title);
         hideAddTaskBtn();
@@ -128,8 +131,12 @@ function checkTile(e) {
         const title = projectTile.querySelector(".project-name");
         let dataProject = projectTile.dataset.project;
 
+        revertOptionLocation();
+
+        displayTask(dataProject);
         selectTile(projectTile);
         updateTitle(title);
+        showAddTaskBtn();
     } else {
         return;
     }
@@ -171,4 +178,12 @@ function selectTile(node) {
     node.classList.add('selected');
 
 }
+
+//show addTaskBtn when prject tile
+function showAddTaskBtn() {
+    const addTaskBtn = document.getElementById("add-list");
+    addTaskBtn.classList.remove("hidden");
+
+}
+
 export { createEventListener, createSpanIcon, projectList, saveToLocalStorage, hideAddTaskBtn, createProject };
