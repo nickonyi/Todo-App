@@ -632,7 +632,7 @@ li:active {
     display: flex;
     align-items: center;
     margin-left: auto;
-    position: relatie;
+    position: relative;
 }
 
 .edit-container.active .option {

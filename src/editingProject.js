@@ -13,7 +13,19 @@ function showDropDown(e) {
     let currentDropDown;
     if (isDropDownButton) {
         relocateOption(e);
+        currentDropDown = e.target.closest('[data-dropdown]');
+        setTimeout(function() {
+            currentDropDown.classList.toggle('active');
+        }, 0);
     }
+
+    document.querySelectorAll('[data-dropdown].active').forEach(dropdown => {
+        //if click anywhere else currentDropDown = undefined meaning all active ones are closed
+        if (dropdown === currentDropDown) { //if its the current button then do nth
+            return;
+        }
+        dropdown.classList.remove("active"); //basically close all dropdown other drop down before open another
+    });
 }
 
 function showRenameForm() {
