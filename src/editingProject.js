@@ -7,6 +7,18 @@ function editContainerEventListener() {
     const option = document.querySelector('.project .option');
     option.firstElementChild.addEventListener('click', showRenameForm);
     option.lastElementChild.addEventListener('click', deleteProject);
+    //event listener of renameForm's rename and cancel buttons
+    const formRenameBtn = document.querySelector('.rename-rename-btn');
+    formRenameBtn.addEventListener('click', (e) => {
+        processRenameInput(e);
+        e.preventDefault();
+    });
+
+    const formCancelBtn = document.querySelector('.rename-cancel-btn');
+    formCancelBtn.addEventListener('click', () => {
+        revertRenameFormLocation();
+        displayRenamedProject();
+    });
 }
 
 function showDropDown(e) {
@@ -47,6 +59,7 @@ function showRenameForm(e) {
     animateRenameForm();
 
     document.querySelector('.project-rename-input').focus();
+    tileNode.classList.add("hidden");
 }
 
 function hideDropDown(editContainerNode) {
@@ -64,6 +77,12 @@ function deleteProject(e) {
         today.classList.add("selected");
         updateTitle(nameNode);
     }
+
+    revertOptionLocation(e);
+    tile.remove();
+    sortArray();
+    projectList.splice(index, 1);
+    saveToLocalStorage();
 }
 
 function revertOptionLocation() {
@@ -133,12 +152,40 @@ function animateRenameForm() {
     }, 0);
 }
 
+function processRenameInput(e) {
+    e.preventDefault();
+    const tileNode = document.querySelector('.project .tile.hidden');
+    let renameInput = document.querySelector('.project-rename-input').value;
+    const projectName = tileNode.querySelector('.project-name');
+    projectName.textContent = renameInput;
+
+    let dataNum = tileNode.dataset.project;
+
+    projectList[dataNum].name = renameInput;
+    saveToLocalStorage();
+
+    displayRenamedProject();
+    updateTitle(projectName);
+    revertRenameFormLocation();
+}
+
 function displayRenamedProject() {
     const hiddenTile = document.querySelector('div.hidden');
     hiddenTile.classList.remove('hidden');
 }
 
 function sortArray() {
+    let i = 0;
+    const tiles = document.querySelectorAll('.project .tile');
+    tiles.forEach((tile) => {
+        let dataNum = tile.dataset.project;
+        tile.dataset.project = i;
+        projectList[dataNum].dataProject = i;
+        i++;
+    });
+
+    projectList.sort((a, b) => a.dataProject - b.dataProject);
+    saveToLocalStorage();
 
 }
 
