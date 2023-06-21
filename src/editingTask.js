@@ -38,7 +38,15 @@ function updateImportantTask(e) {
 
 
 
-function deleteTask() {
+function deleteTask(e) {
+    let listNode = e.target.closest('li');
+    let id = listNode.id;
+    let selectedTask = findSelectedTask(id);
+    let dataProject = selectedTask.dataProject;
+    projectList[dataProject].taskList = projectList[dataProject].taskList.filter(task => task != selectedTask);
+    saveToLocalStorage();
+    revertOptionLocation();
+    listNode.remove();
 
 }
 
@@ -54,19 +62,41 @@ function findSelectedTask(listId) {
     return selectedTask;
 }
 
-function showEditForm() {
+function showEditForm(e) {
+    let editContainerNode = e.target.parentNode.parentNode;
+    hideDropDown(editContainerNode);
+    relocateEditListForm(e);
+
 
 }
 
-function relocateEditListForm() {
+function relocateEditListForm(e) {
+    const listNode = e.target.closest('li');
+    let ul = listNode.parentNode;
 
+    const editListForm = document.getElementById('edit-list-form');
+    const taskTitle = listNode.querySelector('.task-title').textContent;
+    const taskDetails = listNode.querySelector('.task-details').textContent;
+    const taskDate = listNode.querySelector('.date').textContent;
+
+    const titleInput = editListForm.querySelector("#edit-list-title");
+    const detailInput = editListForm.querySelector("#edit-list-details");
+    const dateInput = editListForm.querySelector("#edit-list-date");
+
+    titleInput.value = taskTitle;
+    detailInput.value = taskDetails;
+    dateInput.value = taskDate;
+
+    listNode.classList.add("hidden");
+    editListForm.classList.remove("hidden");
+    ul.insertBefore(editListForm, listNode);
 }
 
 function revertEditFormLocation() {
 
 }
 
-function processEditTask() {
+function processEditTask(e) {
 
 }
 

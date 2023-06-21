@@ -4,6 +4,7 @@ import { revertOptionLocation } from "./editingProject";
 import { checkWhichHomeTile } from "./homeSection";
 
 
+
 function createEventListener() {
     //event listerner for creating a form for adding projects
     const cancel = document.querySelector('.project-cancel-btn');
@@ -17,6 +18,7 @@ function createEventListener() {
 
     const leftPanel = document.querySelector('.left-panel');
     leftPanel.addEventListener('click', checkTile);
+
 
 
     displayProject(projectList);

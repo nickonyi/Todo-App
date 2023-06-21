@@ -41,15 +41,15 @@ function checkListEvent(e) {
     let isStarIcon = e.target.matches('.star-outline');
     let isCircleIcon = e.target.matches('.unchecked');
 
-    let isEditSubmitBtn = e.target.matches('.list-submit-btn');
-    let isEditTaskCancel = e.target.matches('.list-cancel-btn');
+    let isEditSubmitBtn = e.target.matches('.edit-list-submit-btn');
+    let isEditTaskCancel = e.target.matches('.edit-list-cancel-btn');
 
     let isDeleteBtn = e.target.matches('#list-delete');
     let isEditBtn = e.target.matches('#list-edit');
 
-    if (isEditBtn) {
-        console.log("Yes that is true");
-    }
+
+
+
 
     if (isStarIcon) {
         styleImportantTask(e);
@@ -57,6 +57,12 @@ function checkListEvent(e) {
     } else if (isCircleIcon) {
         styleCompletedTask(e);
         updateCompletedTask(e);
+    } else if (isDeleteBtn) {
+        deleteTask(e);
+    } else if (isEditBtn) {
+        showEditForm(e);
+    } else if (isEditSubmitBtn) {
+        processEditTask(e);
     }
 }
 
@@ -176,7 +182,7 @@ function addTask(listId, title, details, date, completed, important) {
 
     const editContainer = document.createElement('div');
     editContainer.dataset.dropdown = "";
-    editContainer.classList.add('edit-codatentainer');
+    editContainer.classList.add('edit-container');
     listRight.appendChild(editContainer);
 
     const threeDots = createSpanIcon('more_vert');
