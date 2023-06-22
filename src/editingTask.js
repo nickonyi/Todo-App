@@ -97,11 +97,47 @@ function revertEditFormLocation() {
 }
 
 function processEditTask(e) {
+    let title = document.querySelector('#edit-list-title').value;
+    let details = document.querySelector('#edit-list-details').value;
+    let date = document.querySelector('#edit-list-date').value;
+    let taskId = findHiddenTask().id;
+    let selectedTask = findSelectedTask(taskId);
 
+    selectedTask.title = title;
+    selectedTask.details = details;
+    selectedTask.date = processDateData(date);
+    saveToLocalStorage();
+
+    revertEditFormLocation();
+    revertOptionLocation();
+    showHiddenTask();
+
+    let dataProject = selectedTask.dataProject;
+    refreshDisplay(dataProject);
+
+    e.preventDefault();
+
+}
+//refresh the content display after its been edited/changed in some way
+function refreshDisplay(dataProject) {
+    const selectedTile = document.querySelector('.selected');
+    if (selectedTile.closest('.project') != null) {
+        displayTask(dataProject);
+    } else if (selectedTile.closest('.home') != null) {
+        checkWhichHomeTile(selectedTile);
+    } else {
+        return;
+    }
+}
+
+function findHiddenTask() {
+    const hiddenTask = document.querySelector('li.hidden');
+    return hiddenTask;
 }
 
 function showHiddenTask() {
-
+    const hiddenTask = document.querySelector('li.hidden');
+    hiddenTask.classList.remove('hidden');
 }
 
 export {
