@@ -93,7 +93,11 @@ function relocateEditListForm(e) {
 }
 
 function revertEditFormLocation() {
+    const editForm = document.querySelector('#edit-list-form');
+    const listTodo = document.querySelector('.list-todo');
 
+    editForm.classList.add('hidden');
+    listTodo.appendChild(editForm);
 }
 
 function processEditTask(e) {

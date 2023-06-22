@@ -1,4 +1,5 @@
 import { projectList, createSpanIcon, saveToLocalStorage } from "./creatingProject"
+import { revertOptionLocation } from "./editingProject";
 import {
     styleCompletedTask,
     updateCompletedTask,
@@ -63,6 +64,12 @@ function checkListEvent(e) {
         showEditForm(e);
     } else if (isEditSubmitBtn) {
         processEditTask(e);
+    } else if (isEditTaskCancel) {
+        revertEditFormLocation();
+        showHiddenTask();
+        revertOptionLocation();
+    } else {
+        return;
     }
 }
 
