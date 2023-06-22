@@ -14,6 +14,7 @@
     --fs-700: 2rem;
     --fs-800: 2.5rem;
     --fs-900: 3.5rem;
+    /*color primo*/
     /* color*/
     --clr-primary: hsl(220, 98%, 61%);
     --clr-primary-grd1: hsl(192, 100%, 67%);
@@ -32,6 +33,13 @@
     --clr-Dark-grayish-blue: hsl(234, 11%, 52%);
     --clr-very-dark-grayish-blue: hsl(233, 14%, 35%);
     --clr-muy-dark-grayish-blue: hsl(237, 14%, 26%);
+    --bgColor1: #15202b;
+    --bgColor2: #192734;
+    --bgColor3: #22303c;
+    --bgColorPopUp: #273746;
+    --textColor: #eaebec;
+    --accent: hsl(192, 100%, 67%);
+    --accentDark: hsl(220, 98%, 61%);
 }
 
 
@@ -74,6 +82,15 @@ body {
 
 body {
     font-family: var(--ff-primary);
+}
+
+body.light {
+    --bgColor2: #ececec;
+    --bgColor3: #f2f3f5;
+    --bgColor1: #bbb5bb;
+    --bgColorPopUp: #f3f1f3;
+    --textColor: #020202;
+    --accentDark: hsl(220, 98%, 61%);
 }
 
 
@@ -147,7 +164,7 @@ body {
 }
 
 .label {
-    background-color: var(--clr-light-grayish-blue);
+    background-color: var(--bgColor1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -158,7 +175,7 @@ body {
     position: relative;
     transform: scale(0.8);
     transition: background-color 0.2s ease-in;
-    border: solid 3px var(--clr-dark-saturated-blue);
+    border: solid 3px var(--accentDark);
     cursor: pointer;
 }
 
@@ -174,15 +191,16 @@ body {
 }
 
 .moon {
-    color: var(--clr-dark-saturated-blue);
+    color: rgb(86, 152, 163);
     transform: scale(1.3);
 }
 
 .ball {
     position: absolute;
-    background-color: var(--clr-dark-saturated-blue);
-    height: 25px;
-    width: 25px;
+    background-color: var(--accentDark);
+    border: solid 4px var(--bgColor1);
+    height: 35px;
+    width: 35px;
     left: 3px;
     border-radius: 50%;
     transition: transform 0.2s linear;
@@ -192,12 +210,13 @@ body {
 /* plus meaning target the node after it */
 
 .checkbox:checked+.label .ball {
-    transform: translate(48px);
-    background-color: var(--clr-dark-saturated-blue);
+    transform: translate(37px);
+    background-color: var(--accentDark);
+    border: solid 4px var(--bgColor3);
 }
 
 .checkbox:checked+label {
-    background-color: var(--clr-dark-grayish-blue);
+    background-color: var(--bgColor3);
 }
 
 
@@ -219,10 +238,10 @@ body {
 /* css for left panel*/
 
 .left-panel {
-    background-color: var(--clr-light-grayish-blue);
+    background-color: var(--bgColor1);
     display: flex;
     flex-direction: column;
-    color: var(--clr-text-color);
+    color: var(--textColor);
     padding: 20px;
     width: 50px;
     user-select: none;
@@ -280,7 +299,7 @@ form,
 .left-panel .tile:hover,
 button:hover,
 form:hover {
-    background-color: var(--clr-dark-grayish-blue);
+    background-color: var(--bgColor2);
 }
 
 .selected {
@@ -302,7 +321,7 @@ form:hover {
     display: flex;
     opacity: 1;
     flex-direction: column;
-    background: var(--clr-text-color);
+    background-color: var(--bgColorPopUp);
     bottom: 30px;
     right: 10px;
     z-index: 2;
@@ -428,6 +447,7 @@ input[type="submit"]:hover {
 /* css for right panel */
 
 .right-panel {
+    background-color: var(--bgColor2);
     display: flex;
     flex-direction: column;
     padding: 30px 50px;
@@ -451,7 +471,7 @@ input[type="submit"]:hover {
 ul {
     padding: 0;
     list-style-type: none;
-    color: var(--clr-text-color);
+    color: var(--textColor);
 }
 
 .list-todo {

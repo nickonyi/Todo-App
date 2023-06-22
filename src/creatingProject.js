@@ -126,7 +126,7 @@ function checkTile(e) {
         const title = homeTile.querySelector('[data-name]');
         selectTile(homeTile);
         revertOptionLocation();
-        // checkWhichHomeTile(homeTile);
+        checkWhichHomeTile(homeTile);
         updateTitle(title);
         hideAddTaskBtn();
     } else if (projectTile != null) {
