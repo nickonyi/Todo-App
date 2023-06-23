@@ -683,6 +683,11 @@ i:hover {
     transform: rotate(1080deg);
 }
 
+#add-project,
+#add-list {
+    color: var(--textColor);
+}
+
 
 /* media queries */
 
